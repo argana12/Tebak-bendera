@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasil Permainan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="score.css">
+</head>
+<body>
+    <div class="background-wave"></div>
+    <div class="particle-container"></div>
+
+    <div class="container">
+        <h1 id="score-title">Hasil Permainan</h1>
+        <div class="score-box">
+            <p id="score-display">Menghitung nilai...</p>
+            <p id="token-display">Token Tersisa: <span id="token-count">0</span></p>
+            <p id="correct-answers">Jawaban Benar: <span id="correct-count">0</span></p>
+        </div>
+        <div class="ad-space" id="ad-space">
+            <p id="ad-placeholder">Wadah Iklan</p>
+        </div>
+        <div class="button-container">
+            <button class="play-again-btn" onclick="playAgain()" id="play-again-btn">Main Lagi</button>
+            <button class="share-btn" onclick="shareScore()" id="share-btn">Share Skor</button>
+            <button class="menu-btn" onclick="backToMenu()" id="menu-btn">Kembali ke Menu</button>
+            <button class="reset-btn" onclick="resetScore()" id="reset-btn">Reset Nilai</button>
+        </div>
+        <div class="leaderboard">
+            <h2 id="leaderboard-title">🏆 Papan Skor</h2>
+            <ul id="leaderboard-list"></ul>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        <p id="footer-copyright">© 2025 Ghozy Games. Semua Hak Dilindungi.</p>
+        <p id="footer-follow">Ikuti kami di:</p>
+        <div class="social-icons">
+            <a href="#" title="YouTube">📺</a>
+            <a href="#" title="Twitter">🐦</a>
+            <a href="#" title="Instagram">📸</a>
+        </div>
+    </div>
+
+    <script src="score.js"></script>
+</body>
+</html>

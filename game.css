@@ -1,0 +1,335 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    color: white;
+    text-align: center;
+    padding: 20px;
+    overflow-x: hidden;
+    position: relative;
+    background: linear-gradient(135deg, #000957, #344CB7);
+    min-height: 100vh;
+}
+
+/* Background Wave */
+.background-wave {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    z-index: -1;
+}
+
+/* Animasi Pattern */
+@keyframes patternScroll {
+    0% { background-position: 0 0; transform: rotate(0deg); }
+    50% { background-position: 200px 200px; transform: rotate(5deg); }
+    100% { background-position: 400px 400px; transform: rotate(0deg); }
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    opacity: 0.15;
+    background: 
+        radial-gradient(circle, rgba(255,255,255,0.2) 10%, transparent 10%),
+        linear-gradient(45deg, rgba(255,255,255,0.1) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.1) 75%);
+    background-size: 50px 50px, 100px 100px;
+    animation: patternScroll 15s linear infinite;
+}
+
+/* Efek Partikel */
+.particle-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    width: 6px;
+    height: 6px;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+    animation: floatParticle 5s infinite ease-in-out;
+}
+
+@keyframes floatParticle {
+    0% { transform: translateY(0) scale(1); opacity: 0.3; }
+    50% { transform: translateY(30px) scale(1.2); opacity: 0.6; }
+    100% { transform: translateY(0) scale(1); opacity: 0.3; }
+}
+
+/* Hujan Meteor */
+@keyframes meteorShower {
+    0% { transform: translate(0, 0) rotate(-45deg); opacity: 1; }
+    100% { transform: translate(800px, 800px) rotate(-45deg); opacity: 0; }
+}
+
+.meteor {
+    position: fixed;
+    width: 2px;
+    height: 80px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.5);
+    filter: blur(1px);
+    z-index: -1;
+    animation: meteorShower linear forwards;
+}
+
+/* Indikator Loading */
+.loading {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1001;
+    font-size: 18px;
+    display: none;
+}
+
+.loading.show {
+    display: block;
+}
+
+/* Kontainer */
+.container {
+    max-width: 600px;
+    margin: 0 auto 20px auto;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+}
+
+/* Space Iklan */
+#ad-space {
+    width: 100%;
+    height: 90px;
+    background: rgba(255, 255, 255, 0.2);
+    text-align: center;
+    line-height: 90px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    margin: 15px auto;
+    border-radius: 10px;
+    border: 2px dashed white;
+}
+
+/* Flag */
+.flag-container {
+    margin: 20px 0;
+}
+
+.flag-container img {
+    width: 250px;
+    height: 150px;
+    border-radius: 8px;
+    border: 3px solid #FFEB00;
+    transition: transform 0.3s ease-in-out;
+}
+
+.flag-container img:hover {
+    transform: scale(1.05);
+}
+
+/* Pilihan Jawaban */
+.choices {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.choice-btn {
+    background: #FFEB00;
+    color: black;
+    padding: 16px;
+    font-size: 18px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s ease-in-out;
+}
+
+.choice-btn:hover {
+    background: #FFC107;
+    transform: scale(1.05);
+}
+
+.choice-btn:active {
+    transform: scale(0.95);
+}
+
+.choice-btn.selected {
+    background: #FFC107;
+    animation: bounceSelected 0.3s ease-in-out;
+}
+
+@keyframes bounceSelected {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Tombol Konfirmasi */
+.confirm-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 14px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color: #28A745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s ease-in-out, box-shadow 0.3s;
+}
+
+.confirm-btn:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+}
+
+.confirm-btn:hover:not(:disabled) {
+    background-color: #218838;
+    transform: scale(1.05);
+    box-shadow: 0px 0px 10px rgba(40, 167, 69, 0.8);
+}
+
+/* Tombol Kembali ke Menu */
+.back-btn {
+    position: relative;
+    margin: 20px auto;
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #FFEB00;
+    background: linear-gradient(45deg, #344CB7, #000957);
+    border: 2px solid #FFEB00;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+    box-shadow: 0 4px 15px rgba(255, 235, 0, 0.3);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+}
+
+.back-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(255, 235, 0, 0.5);
+}
+
+/* Pop-up */
+.popup {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    background: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 30px 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 18px;
+    z-index: 1000;
+    width: 90%;
+    max-width: 350px;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.3);
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out, visibility 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.popup.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.popup.hide {
+    visibility: hidden;
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+    transition: opacity 0.3s ease-in, transform 0.3s ease-in, visibility 0s 0.3s;
+}
+
+.popup button {
+    padding: 14px 26px;
+    border: none;
+    background: #FFEB00;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    margin-top: 10px;
+}
+
+.popup button:hover {
+    background: #FFC107;
+    transform: scale(1.1);
+}
+
+/* Tutorial Popup dengan Scroll */
+.tutorial-popup .tutorial-content {
+    max-height: 70vh; /* Batas tinggi maksimum */
+    overflow-y: auto; /* Scroll vertikal jika konten melebihi */
+    padding-right: 10px; /* Ruang untuk scrollbar */
+}
+
+.tutorial-popup p {
+    margin: 10px 0;
+}
+
+/* Responsivitas */
+@media (max-width: 480px) {
+    .flag-container img {
+        width: 200px;
+        height: 120px;
+    }
+
+    .choice-btn, .confirm-btn {
+        font-size: 16px;
+        padding: 14px;
+    }
+
+    .meteor {
+        height: 50px;
+        animation-duration: 1.5s !important;
+    }
+
+    .particle {
+        width: 4px;
+        height: 4px;
+        animation-duration: 4s;
+    }
+}
